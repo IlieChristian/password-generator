@@ -10,7 +10,8 @@ let passwordEl1 = document.getElementById("password-El1");
 let passwordEl2 = document.getElementById("password-El2");
 let btn = document.getElementById("generate");
 let password = "";
-let sw = 0
+let sw = 0;
+let sw2 = 0;
 
 
 btn.addEventListener('click', () => {
@@ -27,8 +28,36 @@ btn.addEventListener('click', () => {
         };
     };
     sw = 0;
+    sw2 = 1;
+    copyToClip1.dataset.content = 'Click to copy';
+    copyToClip2.dataset.content = 'Click to copy';
 });
 
 function getRandomNumber() {
     return Math.floor(Math.random() * characters.length);
 };
+
+let copyToClip1 = document.getElementById("copyTo-Clip1");
+let copyToClip2 = document.getElementById("copyTo-Clip2");
+
+copyToClip1.addEventListener('click', async () => {
+    if(sw2 !== 0) {    
+        try {
+            await navigator.clipboard.writeText(passwordEl1.textContent);
+            copyToClip1.dataset.content = 'Copied to clipboard!';
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        };
+    };
+});
+
+copyToClip2.addEventListener('click', async () => {
+    if(sw2 !== 0) {   
+        try {
+            await navigator.clipboard.writeText(passwordEl2.textContent);
+            copyToClip2.dataset.content = 'Copied to clipboard!';
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        };
+    }
+});
