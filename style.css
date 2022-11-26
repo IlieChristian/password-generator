@@ -1,0 +1,103 @@
+:root {
+    --bg-color-dark: #1C1C1C;
+    --box-color-dark: #1F2937;
+    --box-color: #ECFDF5;
+    --titlegreen: #4ADF86;
+    --white: #fff;
+    --subtitle: #D5D4D8;
+    --button: #10B981;
+    --button-hover: #059669;
+    --line: #2F3E53;
+    --password: #55F991;
+    --password-box: #273549;
+}
+/*  font-family: 'Inter', sans-serif;
+    font-family: 'Karla', sans-serif; */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background-color: var(--box-color-dark);
+    padding : 100px 50px;
+    margin: 0 10px;
+}
+
+.titlebox {
+    margin-bottom: 30px;
+
+}
+
+.title {
+    color: var(--white);
+    font-family: 'Karla';
+    font-size: 40px;
+}
+
+.titlegreen {
+    color: var(--titlegreen);
+}
+
+.subtitle {
+    color: var(--subtitle);
+    font-size: 20px;
+}
+
+#generate {
+    background-color: var(--button);
+    color: var(--white);
+    border: none;
+    padding: 9px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+#generate:hover {
+    background-color: var(--button-hover);
+}
+
+hr {
+    background-color: var(--line);
+    height: 1px;
+    border: none;
+    margin: 30px 0;
+}
+
+.passwords {
+    font-size: 16px;
+    color: var(--password);
+    display: flex;
+    justify-content: space-between;
+}
+
+.passwordscontent {
+    background: var(--password-box);
+    padding: 4px 16px;
+    border-radius: 5px;
+    width: 210px;
+    height: 39px;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.margin-left {
+    margin-left: 24px;
+}
