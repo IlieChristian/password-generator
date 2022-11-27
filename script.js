@@ -59,5 +59,54 @@ copyToClip2.addEventListener('click', async () => {
         } catch (err) {
             console.error('Failed to copy: ', err);
         };
-    }
+    };
+});
+
+let changeColor = document.getElementById("changeColor");
+var r = document.querySelector(':root');
+let color = "green";
+
+let colorHex = {
+    green: ["#34D399", "#10B981", "#059669"],
+    blue: ["#38BDF8", "#0EA5E9", "#0284C7"],
+    purple: ["#A78BFA", "#8B5CF6", "#7C3AED"],
+    red: ["#FB7185", "#F43F5E", "#E11D48"],
+    yellow: ["#FBBF24", "#F59E0B", "#D97706"]
+};
+
+function setDefaultColor() {
+    r.style.setProperty('--textalt', colorHex.green[0]);
+    r.style.setProperty('--button', colorHex.green[1]);
+    r.style.setProperty('--button-hover', colorHex.green[2]);
+};
+
+setDefaultColor();
+
+changeColor.addEventListener('click', () => {
+    if(color === "green") {
+        r.style.setProperty('--textalt', colorHex.blue[0]);
+        r.style.setProperty('--button', colorHex.blue[1]);
+        r.style.setProperty('--button-hover', colorHex.blue[2]);
+        color = "blue";
+    } else if(color === "blue") {
+        r.style.setProperty('--textalt', colorHex.purple[0]);
+        r.style.setProperty('--button', colorHex.purple[1]);
+        r.style.setProperty('--button-hover', colorHex.purple[2]);
+        color = "purple";
+    } else if(color === "purple") {
+        r.style.setProperty('--textalt', colorHex.red[0]);
+        r.style.setProperty('--button', colorHex.red[1]);
+        r.style.setProperty('--button-hover', colorHex.red[2]);
+        color = "red";
+    } else if(color === "red") {
+        r.style.setProperty('--textalt', colorHex.yellow[0]);
+        r.style.setProperty('--button', colorHex.yellow[1]);
+        r.style.setProperty('--button-hover', colorHex.yellow[2]);
+        color = "yellow";
+    } else if(color === "yellow") {
+        r.style.setProperty('--textalt', colorHex.green[0]);
+        r.style.setProperty('--button', colorHex.green[1]);
+        r.style.setProperty('--button-hover', colorHex.green[2]);
+        color = "green";
+    };
 });
