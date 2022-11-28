@@ -121,8 +121,16 @@ inputRange.oninput = ( () => {
 
 inputRange.onmousedown = (() => {
     inputValue.classList.add("show");
-})
+});
 
 inputRange.onmouseup = (() => {
     inputValue.classList.remove("show");
-})
+});
+
+inputRange.ontouchstart = (() => {
+    inputValue.classList.add("show");
+});
+
+inputRange.ontouchend = (() => {
+    inputValue.classList.remove("show");
+});
