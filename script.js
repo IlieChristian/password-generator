@@ -5,7 +5,7 @@ const characters =
 "#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".",
 "?","/"];
 
-const passwordNumber = 15;
+const passwordNumber = 25;
 let passwordEl1 = document.getElementById("password-El1");
 let passwordEl2 = document.getElementById("password-El2");
 let btn = document.getElementById("generate");
@@ -110,3 +110,19 @@ changeColor.addEventListener('click', () => {
         color = "green";
     };
 });
+
+const inputRange = document.getElementById("inputRange");
+const inputValue = document.getElementById("inputValue");
+inputRange.oninput = ( () => {
+    var value = inputRange.value
+    inputValue.textContent = value;
+    inputValue.style.left = "calc(" + ((value - 8) * 4 + 2 + value * 1) + "%";
+});
+
+inputRange.onmousedown = (() => {
+    inputValue.classList.add("show");
+})
+
+inputRange.onmouseup = (() => {
+    inputValue.classList.remove("show");
+})

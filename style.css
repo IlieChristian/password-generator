@@ -1,5 +1,4 @@
 :root {
-    --bg-color-dark: #1C1C1C;
     --box-color-dark: #1F2937;
     --box-color: #ECFDF5;
     --white: #fff;
@@ -74,7 +73,6 @@ body {
     height: 100vh;
     position: absolute;
 }
-
 #changeColor {
     border: none;
     background-color: var(--button);
@@ -113,6 +111,119 @@ body {
     font-size: 20px;
 }
 
+.inputsection {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 0;
+    position: relative;
+}
+
+.inputcheckbox {
+    display: flex; 
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+label {
+    margin-right: 0;
+    font-size: 18px;
+    color: var(--subtitle);
+}
+
+input[type=range] {
+    appearance: none;
+    background: transparent;
+    position: relative;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--password-hover);
+    margin-top: -2.6px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    appearance: none;
+    height: 10px;
+    background: var(--button);
+    border-radius: 10px;
+    cursor: pointer;
+}
+  
+input[type=range]::before {
+    content: attr(min);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -18px;
+    left: 0;
+    color: var(--password-hover);
+} 
+
+input[type=range]::after {
+    content: attr(max);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -18px;
+    right: 5px;
+    color: var(--password-hover);
+}
+
+.rangebox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.rangebox input {
+    width: 100%;
+}
+
+#inputValue {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px; 
+    color: var(--white);
+    top: -45px;
+    left: calc(50% + 1px);
+    transform: translateX(-50%) scale(0);
+    transform-origin: bottom;
+    transition: transform .3s ease-in-out;
+    z-index: 2;
+}
+
+#inputValue.show { 
+    transform: translateX(-50%) scale(1);
+}
+
+#inputValue::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px; 
+    background-color: var(--button);
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border: 1px solid var(--white);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
 #generate {
     background-color: var(--button);
     color: var(--white);
@@ -145,6 +256,8 @@ hr {
     color: var(--textalt);
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 #copyTo-Clip1, #copyTo-Clip2 {
@@ -165,30 +278,24 @@ hr {
     cursor: default;
 }
 
-#copyTo-Clip2::before {
-    left: 24px;
-}
-
 .passwordscontent {
     background: var(--password-box);
-    padding: 4px 16px;
+    padding: 4px 8px;
     border-radius: 5px;
-    width: 210px;
-    height: 39px;
+    min-width: 210px;
+    max-width: 300px;
+    min-height: 39px;
     text-align: center;
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 0 20px;
 }
 
 .passwordscontent:hover {
     background-color: var(--password-hover);
     transition: .3s ease-in-out;
-}
-
-.margin-left {
-    margin-left: 24px;
 }
 
         /*  ----Responsive----  */
@@ -198,7 +305,7 @@ hr {
     .container {
         padding : 20px 20px;
         margin: 0;
-        width: 80%;
+        width: 90%;
     }
 
     .titlebox {
@@ -211,22 +318,5 @@ hr {
 
     .subtitle {
         font-size: 16px;
-    }
-
-    .passwords {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .passwordscontent {
-        margin: 0 0 25px;
-    }
-
-    .margin-left {
-        margin: 0;
-    }
-
-    #copyTo-Clip2::before {
-        left: 0px;
     }
 }
