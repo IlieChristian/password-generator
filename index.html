@@ -18,33 +18,40 @@
     <div class="clouds"></div>
     
     <div class="container">
-        <div class="titlebox">
-            <h1 class="title">Generate a <br><span class="titlegreen">random password</span></h1>
-            <p class="subtitle">Never use an insecure password again.</p>
-        </div>
-        <div class="inputsection">
-            <div class="rangebox">
-                <span id="inputValue">16</span>
-                <input id="inputRange" type="range" value="16" min="6" max="26" name="nrcharacters">
+        <form id="form" onSubmit="return false">
+            <div class="titlebox">
+                <h1 class="title">Generate a <br><span class="titlegreen">random password</span></h1>
+                <p class="subtitle">Never use an insecure password again.</p>
             </div>
-            <div class="inputcheckbox">
-                <div class="checkbox">    
-                    <label for="wnumber">Numbers</label>
-                    <input type="checkbox" name="wnumber">
+            <div class="inputsection">
+                <div class="rangebox">
+                    <span id="inputValue">16</span>
+                    <input id="characterAmount" type="range" value="16" min="6" max="26" name="nrcharacters">
                 </div>
-                <div class="checkbox">
-                    <label for="wspecialc">Special Characters</label>
-                    <input type="checkbox" name="wspecialc">
-                </div> 
-            </div>  
-        </div>
-        <button id="generate">Generate passwords</button>
+                <div class="inputcheckbox">
+                    <div class="checkbox">    
+                        <label for="includeNumbers">Numbers</label>
+                        <input id="includeNumbers" type="checkbox" name="numbers">
+                    </div>
+                    <div class="checkbox">
+                        <label for="includeSymbols">Symbols</label>
+                        <input id="includeSymbols" type="checkbox" name="symbol">
+                    </div> 
+                    <div class="checkbox">
+                        <label for="includeUppercase">Uppercase</label>
+                        <input id="includeUppercase" type="checkbox" name="uppercase">
+                    </div> 
+                </div>  
+            </div>
+            <button type="submit" id="generate">Generate passwords</button>
+        </form>
         <hr>
         <div class="passwords">
             <span id="copyTo-Clip1" data-content=""><p id="password-El1" class="passwordscontent"></p></span>
             <span id="copyTo-Clip2" data-content=""><p id="password-El2" class="passwordscontent"></p></span>
         </div>
         <button id="changeColor">Change color</button>
+        
     </div>
     <script src="script.js"></script>
 </body>

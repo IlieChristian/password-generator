@@ -176,6 +176,12 @@ input[type=range]::after {
     color: var(--password-hover);
 }
 
+input[type=checkbox] {
+    accent-color: var(--button);
+    width: 15px;
+    height: 15px;
+}
+
 .rangebox {
     position: relative;
     display: flex;
@@ -291,6 +297,7 @@ hr {
     align-items: center;
     justify-content: center;
     margin: 0 0 20px;
+    transition: all 0.2s ease 0s;
 }
 
 .passwordscontent:hover {
@@ -305,7 +312,8 @@ hr {
     .container {
         padding : 20px 20px;
         margin: 0;
-        width: 90%;
+        max-width: 90%;
+        min-width: 60%;
     }
 
     .titlebox {
@@ -318,5 +326,28 @@ hr {
 
     .subtitle {
         font-size: 16px;
+    }
+
+    .inputcheckbox {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .checkbox {
+        margin: 5px 0;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        height: 13px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        width: 15px;
+        height: 15px;
+        margin-top: -1px;
     }
 }

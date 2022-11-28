@@ -1,40 +1,49 @@
-const characters =
-["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W",
-"X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t",
-"u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@",
-"#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".",
-"?","/"];
-
-const passwordNumber = 25;
+const includeNumbersElement = document.getElementById('includeNumbers');
+const includeSymbolsElement = document.getElementById('includeSymbols');
+const includeUppercaseElement = document.getElementById('includeUppercase');
+const characterAmountNumber = document.getElementById("characterAmount");
+const form = document.getElementById('form');
+const inputValue = document.getElementById("inputValue");
 let passwordEl1 = document.getElementById("password-El1");
 let passwordEl2 = document.getElementById("password-El2");
-let btn = document.getElementById("generate");
-let password = "";
 let sw = 0;
 let sw2 = 0;
 
+const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122);
+const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90);
+const NUMBER_CHAR_CODES = arrayFromLowToHigh(48,57);
+const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(arrayFromLowToHigh(58, 64)).concat(arrayFromLowToHigh(91, 96)).concat(arrayFromLowToHigh(123, 126));
 
-btn.addEventListener('click', () => {
-    for(let i = 0 ; i < passwordNumber * 2 ; i++) {
-        password += characters[getRandomNumber()];
-        if(password.length === passwordNumber){
-            if(sw === 0){
-                passwordEl1.textContent = password;
-                sw++;
-            } else {
-                passwordEl2.textContent = password;
-            };
-            password = "";
-        };
-    };
-    sw = 0;
-    sw2 = 1;
-    copyToClip1.dataset.content = 'Click to copy';
-    copyToClip2.dataset.content = 'Click to copy';
+
+form.addEventListener('submit', () => {
+    const characterAmount = characterAmountNumber.value;
+    const includeNumbers =  includeNumbersElement.checked;
+    const includeSymbols = includeSymbolsElement.checked;
+    const includeUppercase = includeUppercaseElement.checked;
+    passwordEl1.textContent = generatePassword(characterAmount, includeNumbers, includeSymbols, includeUppercase);;
+    passwordEl2.textContent = generatePassword(characterAmount, includeNumbers, includeSymbols, includeUppercase);;
 });
 
-function getRandomNumber() {
-    return Math.floor(Math.random() * characters.length);
+function generatePassword(characterAmount, includeNumbers, includeSymbols, includeUppercase) {
+    let charCodes = LOWERCASE_CHAR_CODES;
+    if(includeNumbers) {charCodes = charCodes.concat(NUMBER_CHAR_CODES)};
+    if(includeSymbols) {charCodes = charCodes.concat(SYMBOL_CHAR_CODES)};
+    if(includeUppercase) {charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)};
+    console.log(charCodes)
+    const passwordCharacters = [];
+    for(let i = 0 ; i < characterAmount ; i++) {
+        const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)];
+        passwordCharacters.push(String.fromCharCode(characterCode));
+    };
+    return passwordCharacters.join('');
+};
+
+function arrayFromLowToHigh(low, high) {
+    const array = [];
+    for(let i = low ; i <= high ; i++) {
+        array.push(i);
+    }
+    return array;
 };
 
 let copyToClip1 = document.getElementById("copyTo-Clip1");
@@ -111,26 +120,20 @@ changeColor.addEventListener('click', () => {
     };
 });
 
-const inputRange = document.getElementById("inputRange");
-const inputValue = document.getElementById("inputValue");
-inputRange.oninput = ( () => {
-    var value = inputRange.value
+form.addEventListener = ('submit', e => {
+    e.stopImmediatePropagation();
+});
+
+characterAmountNumber.oninput = ( () => {
+    let value = characterAmountNumber.value
     inputValue.textContent = value;
     inputValue.style.left = "calc(" + ((value - 8) * 4 + 2 + value * 1) + "%";
 });
 
-inputRange.onmousedown = (() => {
+characterAmountNumber.onpointerdown = (() => {
     inputValue.classList.add("show");
 });
 
-inputRange.onmouseup = (() => {
-    inputValue.classList.remove("show");
-});
-
-inputRange.ontouchstart = (() => {
-    inputValue.classList.add("show");
-});
-
-inputRange.ontouchend = (() => {
+characterAmountNumber.onpointerup = (() => {
     inputValue.classList.remove("show");
 });
