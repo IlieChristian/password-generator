@@ -22,6 +22,9 @@ form.addEventListener('submit', () => {
     const includeUppercase = includeUppercaseElement.checked;
     passwordEl1.textContent = generatePassword(characterAmount, includeNumbers, includeSymbols, includeUppercase);;
     passwordEl2.textContent = generatePassword(characterAmount, includeNumbers, includeSymbols, includeUppercase);;
+    sw2 = 1;
+    copyToClip1.dataset.content = 'Click to copy';
+    copyToClip2.dataset.content = 'Click to copy';
 });
 
 function generatePassword(characterAmount, includeNumbers, includeSymbols, includeUppercase) {
