@@ -137,20 +137,11 @@ characterAmountNumber.onmousedown = (() => {
 });
 
 characterAmountNumber.onmouseup = (() => {
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
         inputValue.classList.remove("show");
     }, 600);
 });
 
-if(characterAmountNumber.onmousedown){
-    clearTimeout(timeout);
-    characterAmountNumber.onmouseup = (() => {
-        var timeout = setTimeout(() => {
-            inputValue.classList.remove("show");
-        }, 600);
-    });
-};
-console.log(timeout)
 characterAmountNumber.ontouchstart = (() => {
     inputValue.classList.add("show");
 });
