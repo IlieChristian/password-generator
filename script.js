@@ -32,7 +32,6 @@ function generatePassword(characterAmount, includeNumbers, includeSymbols, inclu
     if(includeNumbers) {charCodes = charCodes.concat(NUMBER_CHAR_CODES)};
     if(includeSymbols) {charCodes = charCodes.concat(SYMBOL_CHAR_CODES)};
     if(includeUppercase) {charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)};
-    console.log(charCodes)
     const passwordCharacters = [];
     for(let i = 0 ; i < characterAmount ; i++) {
         const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)];
@@ -133,10 +132,31 @@ characterAmountNumber.oninput = ( () => {
     inputValue.style.left = "calc(" + ((value - 8) * 4 + 2 + value * 1) + "%";
 });
 
-characterAmountNumber.onpointerdown = (() => {
+characterAmountNumber.onmousedown = (() => {
     inputValue.classList.add("show");
 });
 
-characterAmountNumber.onpointerup = (() => {
-    inputValue.classList.remove("show");
+characterAmountNumber.onmouseup = (() => {
+    const timeout = setTimeout(() => {
+        inputValue.classList.remove("show");
+    }, 600);
+});
+
+if(characterAmountNumber.onmousedown){
+    clearTimeout(timeout);
+    characterAmountNumber.onmouseup = (() => {
+        var timeout = setTimeout(() => {
+            inputValue.classList.remove("show");
+        }, 600);
+    });
+};
+console.log(timeout)
+characterAmountNumber.ontouchstart = (() => {
+    inputValue.classList.add("show");
+});
+
+characterAmountNumber.ontouchend = (() => {
+    setTimeout(() => {
+        inputValue.classList.remove("show");
+    }, 600);
 });
