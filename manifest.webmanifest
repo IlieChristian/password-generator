@@ -1,0 +1,20 @@
+{
+    "name": "Password Generator",
+    "short_name": "Pass Generator",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "rgba(0,0,0,0)",
+    "description": "A app which you can generate random password with uppercase, numbers and symbols",
+    "icons": [
+      {
+        "src": "images/lock_512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "images/lock_192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
