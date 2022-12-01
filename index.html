@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/lock.svg" type="image/x-icon">
     <link rel="preload" as="font">
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials">
     <title>Password Generator</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="twinkling"></div> 
     <div class="clouds"></div>
     
-    <div class="container">
+    <main class="container">
         <form id="form" onSubmit="return false">
             <div class="titlebox">
                 <h1 class="title">Generate a <br><span class="titlegreen">random password</span></h1>
@@ -50,7 +50,7 @@
         </div>
         <button id="changeColor">Change color</button>
         
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
