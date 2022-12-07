@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "version": "1.1",
+    "name": "Password Generator",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "/images/lock_192x192.png"
+    },
+    "permissions": [
+        "tabs"
+    ]
+}

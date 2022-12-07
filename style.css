@@ -25,7 +25,7 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-    :root {
+:root {
     --box-color-dark: #1F2937;
     --box-color: #ECFDF5;
     --white: #fff;
@@ -40,47 +40,6 @@
 /*  font-family: 'Inter', sans-serif;
     font-family: 'Karla', sans-serif; */
 
-
-        /*  ----Background----  */
-@keyframes move-twink-back {
-    from {background-position:0 0;}
-    to {background-position:-10000px 5000px;}
-}
-
-@keyframes move-clouds-back {
-    from {background-position:0 0;}
-    to {background-position:10000px 0;}
-}
-
-.stars, .twinkling, .clouds {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    width:100%;
-    height:100%;
-    display:block;
-}
-
-.stars {
-    background:#000 url(images/stars.webp) repeat top center;
-    z-index:0;
-}
-
-.twinkling{
-    background:transparent url(images/twinkling.webp) repeat top center;
-    z-index:1;
-    animation: move-twink-back 200s linear infinite;
-}
-
-.clouds{
-    background:transparent url(images/clouds.webp) repeat top center;
-    z-index:2;
-    opacity: .4;
-    animation:move-clouds-back 200s linear infinite;
-}
-
         /*  ----Items----  */
 
 * {
@@ -91,14 +50,30 @@
 }
 
 body {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    font-family: 'Inter', sans-serif;
     width: 100%;
-    height: 100%;
-    position: absolute;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    background-size: 300% 300%;
+    background-image: linear-gradient(
+            -45deg, 
+            rgba(59,173,227,1) 0%, 
+            rgba(87,111,230,1) 25%, 
+            rgba(152,68,183,1) 51%, 
+            rgba(255,53,127,1) 100%
+    );  
+    animation: AnimateBG 20s ease infinite;
+    
 }
+
+@keyframes AnimateBG { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 #changeColor {
     border: none;
     background-color: var(--button);
@@ -116,10 +91,18 @@ body {
     padding : 70px 50px;
     margin: 0 10px;
     z-index: 999;
+    box-shadow:  7px 7px 14px #1a232f,
+                -7px -7px 14px #242f3f;
+    border-radius: 25px;
+}
+
+#form {
+    text-align: center;
 }
 
 .titlebox {
     margin-bottom: 30px;
+    text-align: start; 
 }
 
 .title {
@@ -297,7 +280,7 @@ input[type=checkbox] {
     background-color: var(--button);
     color: var(--white);
     border: none;
-    padding: 9px 16px;
+    padding: 12px 19px;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
@@ -409,13 +392,8 @@ hr {
         height: 13px;
     }
     input[type=range]::-webkit-slider-thumb {
-        width: 15px;
-        height: 15px;
-        margin-top: -1px;
+        width: 20px;
+        height: 20px;
+        margin-top: -3px;
     }
-}
-
-@media (max-height: 768px) {
-    
-   
 }
